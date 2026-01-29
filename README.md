@@ -144,7 +144,23 @@ Jobs are scheduled to run during off-business hours to simulate production batch
 
 ## Analytics & Reporting
 
+The Gold layer datasets are designed to directly support analytical queries and reporting use cases. Aggregated fact and dimension tables enable efficient analysis of sales performance, pricing trends, and product-level metrics across the merged organization.
+
+The curated datasets can be easily consumed by Databricks dashboards or external BI tools to analyze:
+- Total revenue and quantity sold over time
+- Top-performing products and customers
+- Pricing consistency and historical price trends
+- Monthly sales comparisons across business units
+
 ## Business Impact
+
+This project demonstrates how a well-designed data engineering pipeline can resolve data fragmentation challenges following a corporate acquisition. By consolidating data into a unified Lakehouse architecture, the solution enables consistent reporting, reliable metrics, and improved decision-making.
+
+Key outcomes include:
+- A single source of truth for sales and pricing data
+- Standardized metrics across parent and acquired companies
+- Improved data quality and reduced manual reconciliation efforts
+- A scalable foundation for future acquisitions and data growth
 
 ## Repository Structure
 
