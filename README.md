@@ -41,6 +41,18 @@ A Star Schema data model is implemented in the Gold layer to ensure high-perform
 
 ## High-Level Architecture
 
+The solution is built using a Lakehouse architecture implemented on Databricks, following the Medallion Architecture design pattern. Data flows from cloud storage into progressively refined layers to ensure data quality, scalability, and analytical performance.
+
+![Medallion Architecture](architecture/medallion_architecture.png)
+
+At a high level:
+- Raw data from both the parent and acquired companies is ingested into the Bronze layer.
+- The Silver layer applies data cleansing, standardization, and business rules.
+- The Gold layer exposes analytics-ready datasets modeled for reporting and decision-making.
+
+This layered approach enables reliable incremental processing, clear separation of concerns, and simplified debugging while supporting future scalability.
+
+
 ## Data Sources
 
 ## Data Modeling
