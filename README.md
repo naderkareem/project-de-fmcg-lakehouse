@@ -164,6 +164,28 @@ Key outcomes include:
 
 ## Repository Structure
 
+The repository is organized to reflect a modular and production-oriented data engineering workflow:
+
+- `architecture/` – High-level architecture and data flow diagrams  
+- `notebooks/` – Databricks notebooks organized by setup, dimensions, and fact processing  
+- `sql/` – SQL scripts for data modeling and analytical queries  
+- `docs/` – Detailed documentation on data modeling and pipeline design  
+- `data_samples/` – Small sample datasets for schema reference and testing  
+- `README.md` – Project overview and documentation  
+
+This structure separates concerns and makes the project easy to understand and extend.
+
 ## How to Run This Project
+
+This project is designed to be executed on Databricks Free Edition.
+
+High-level execution steps:
+1. Clone this repository and import the notebooks into a Databricks workspace.
+2. Configure access to AWS S3 for data ingestion.
+3. Run the setup notebooks to initialize catalogs and utility functions.
+4. Execute dimension processing notebooks.
+5. Execute fact processing notebooks for full and incremental loads.
+
+The pipeline is intended to be run as a scheduled Databricks Job in a production-like batch setup.
 
 ## Future Enhancements
