@@ -132,6 +132,16 @@ This approach improves scalability, reduces processing time, and ensures data co
 
 ## Orchestration & Scheduling
 
+The end-to-end pipeline is orchestrated using Databricks Jobs to ensure reliable and repeatable execution of data processing tasks.
+
+The workflow is designed with clear task dependencies:
+- Setup and utility tasks run first.
+- Dimension tables are processed before fact tables.
+- Full-load and incremental fact processing are executed based on data availability.
+
+Jobs are scheduled to run during off-business hours to simulate production batch processing and to ensure that downstream analytical datasets are always refreshed with the latest available data.
+
+
 ## Analytics & Reporting
 
 ## Business Impact
