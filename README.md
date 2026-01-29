@@ -55,7 +55,35 @@ This layered approach enables reliable incremental processing, clear separation 
 
 ## Data Sources
 
+The project integrates data from two distinct organizations to simulate a real-world acquisition scenario.
+
+**Parent Company (Atlon):**
+- Provides structured, historical data at a monthly grain.
+- Data includes customers, products, gross pricing, and order transactions.
+- Designed for enterprise reporting with stable schemas.
+
+**Acquired Company (Sports Bar):**
+- Provides operational data as daily CSV file drops.
+- Data is ingested from an S3 landing zone to simulate batch ingestion.
+- Data quality issues include inconsistent naming, unreliable identifiers, and varying pricing structures.
+
+This dual-source setup reflects common challenges encountered during mergers and acquisitions, including schema mismatches, grain differences, and data quality inconsistencies.
+
 ## Data Modeling
+
+The analytics layer is designed using a Star Schema to support efficient querying and reporting. A centralized fact table captures transactional metrics and is linked to multiple dimension tables that provide descriptive context.
+
+**Fact Table:**
+- `fact_orders` – Stores order-level and aggregated sales metrics such as quantity sold and revenue.
+
+**Dimension Tables:**
+- `dim_customers` – Customer attributes standardized across both companies.
+- `dim_products` – Product details with surrogate keys to resolve unreliable source identifiers.
+- `dim_gross_price` – Standardized pricing information aligned to reporting periods.
+- `dim_date` – Calendar dimension to support time-based analysis.
+
+This modeling approach ensures compatibility with BI tools, simplifies analytical queries, and enables consistent business metrics across the merged organization.
+
 
 ## ETL Pipeline Design
 ### Bronze Layer
