@@ -141,7 +141,6 @@ The workflow is designed with clear task dependencies:
 
 Jobs are scheduled to run during off-business hours to simulate production batch processing and to ensure that downstream analytical datasets are always refreshed with the latest available data.
 
-
 ## Analytics & Reporting
 
 The Gold layer datasets are designed to directly support analytical queries and reporting use cases. Aggregated fact and dimension tables enable efficient analysis of sales performance, pricing trends, and product-level metrics across the merged organization.
@@ -167,9 +166,7 @@ Key outcomes include:
 The repository is organized to reflect a modular and production-oriented data engineering workflow:
 
 - `architecture/` – High-level architecture and data flow diagrams  
-- `notebooks/` – Databricks notebooks organized by setup, dimensions, and fact processing  
-- `sql/` – SQL scripts for data modeling and analytical queries  
-- `docs/` – Detailed documentation on data modeling and pipeline design  
+- `notebooks/` – Databricks notebooks organized by setup, dimensions, and fact processing   
 - `data_samples/` – Small sample datasets for schema reference and testing  
 - `README.md` – Project overview and documentation  
 
@@ -189,3 +186,13 @@ High-level execution steps:
 The pipeline is intended to be run as a scheduled Databricks Job in a production-like batch setup.
 
 ## Future Enhancements
+
+Potential enhancements to this project include:
+- Implementing Slowly Changing Dimensions (SCD) for customer and product attributes.
+- Adding data quality checks and validation frameworks.
+- Introducing streaming ingestion for near real-time analytics.
+- Integrating external BI tools for advanced visualization.
+- Enhancing orchestration with alerting and failure handling mechanisms.
+
+These enhancements would further align the pipeline with enterprise-scale production systems.
+
