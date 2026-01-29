@@ -120,6 +120,16 @@ This layer represents the single source of truth for analytical and decision-sup
 
 ## Incremental Loading Strategy
 
+The pipeline is designed to support incremental data processing to simulate real-world production behavior. Instead of reprocessing the entire dataset, only newly arrived data is ingested and transformed during each run.
+
+Key aspects of the incremental strategy:
+- New data files are ingested from an S3 landing directory on a daily basis.
+- A staging-based approach is used to process only unprocessed files.
+- Processed files are logically separated to prevent duplicate ingestion.
+- Incremental fact data is appended to existing tables while preserving historical records.
+
+This approach improves scalability, reduces processing time, and ensures data consistency as data volumes grow over time.
+
 ## Orchestration & Scheduling
 
 ## Analytics & Reporting
