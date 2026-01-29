@@ -52,7 +52,6 @@ At a high level:
 
 This layered approach enables reliable incremental processing, clear separation of concerns, and simplified debugging while supporting future scalability.
 
-
 ## Data Sources
 
 The project integrates data from two distinct organizations to simulate a real-world acquisition scenario.
@@ -84,11 +83,40 @@ The analytics layer is designed using a Star Schema to support efficient queryin
 
 This modeling approach ensures compatibility with BI tools, simplifies analytical queries, and enables consistent business metrics across the merged organization.
 
-
 ## ETL Pipeline Design
 ### Bronze Layer
+
+The Bronze layer is responsible for raw data ingestion from AWS S3 into Databricks. Data is ingested with minimal transformation to preserve the original structure and ensure traceability.
+
+Key characteristics:
+- Raw CSV files are ingested as-is from landing locations.
+- Metadata columns such as ingestion timestamp and source file name are added.
+- No business rules or data cleansing is applied at this stage.
+
+This layer serves as an immutable source of truth and enables reprocessing in case of downstream logic changes.
+
 ### Silver Layer
+
+The Silver layer focuses on data cleansing, standardization, and application of business rules to create reliable, analytics-ready datasets.
+
+Key transformations include:
+- Deduplication of customer and product records.
+- Standardization of categorical fields and correction of common spelling inconsistencies.
+- Generation of surrogate keys for products using hashing techniques due to unreliable source identifiers.
+- Validation and normalization of pricing and quantity values.
+
+The Silver layer ensures consistent definitions and data quality across datasets originating from different systems.
+
 ### Gold Layer
+
+The Gold layer contains curated, business-ready datasets optimized for reporting and analytics. Data from both companies is consolidated and aligned to a common reporting grain.
+
+Key outputs:
+- Aggregated fact tables aligned to monthly reporting requirements.
+- Conformed dimension tables shared across the organization.
+- Star Schema-based datasets designed for BI and dashboard consumption.
+
+This layer represents the single source of truth for analytical and decision-support workloads.
 
 ## Incremental Loading Strategy
 
